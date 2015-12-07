@@ -12,8 +12,8 @@ class Home extends CI_Controller {
 	public function index() {
 
 		$fb = new Facebook\Facebook([
-			'app_id' => '1686504724926931',
-			'app_secret' => 'beb83ad44570738c79ae21f6e662a19d',
+			'app_id' => '',
+			'app_secret' => '',
 			'default_graph_version' => 'v2.2',
 		]);
 
@@ -29,8 +29,8 @@ class Home extends CI_Controller {
 
 	public function result() {
 		$fb = new Facebook\Facebook([
-			'app_id' => '1686504724926931',
-			'app_secret' => 'beb83ad44570738c79ae21f6e662a19d',
+			'app_id' => '',
+			'app_secret' => '',
 			'default_graph_version' => 'v2.2',
 		]);
 
@@ -40,7 +40,7 @@ class Home extends CI_Controller {
 				'tela' => 'v_result',
 				'fb' => $fb,
 				'config' => array (
-					'app_id' => '1686504724926931'
+					'app_id' => ''
 				)
 		);
 		
