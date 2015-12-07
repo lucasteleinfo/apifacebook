@@ -28,16 +28,16 @@ if (! isset($accessToken)) {
 }
 
 // Logged in
-echo '<h3>Access Token</h3>';
-var_dump($accessToken->getValue());
+//echo '<h3>Access Token</h3>';
+//var_dump($accessToken->getValue());
 
 // The OAuth 2.0 client handler helps us manage access tokens
 $oAuth2Client = $fb->getOAuth2Client();
 
 // Get the access token metadata from /debug_token
 $tokenMetadata = $oAuth2Client->debugToken($accessToken);
-echo '<h3>Metadata</h3>';
-var_dump($tokenMetadata);
+//echo '<h3>Metadata</h3>';
+//var_dump($tokenMetadata);
 
 // Validation (these will throw FacebookSDKException's when they fail)
 $tokenMetadata->validateAppId($config['app_id']);
@@ -63,3 +63,63 @@ $_SESSION['fb_access_token'] = (string) $accessToken;
 // User is logged in with a long-lived access token.
 // You can redirect them to a members-only page.
 //header('Location: https://example.com/members.php');
+
+
+
+?>
+<br>
+<br>
+<br>
+<br>
+<hr>
+<?php 
+
+
+
+
+
+
+
+
+
+try {
+	// Returns a `Facebook\FacebookResponse` object
+	$response = $fb->get(
+  		'/me?fields=id,name,first_name,last_name,age_range,link,gender,locale,timezone,updated_time,verified,picture', 
+		$accessToken
+	);
+} catch(Facebook\Exceptions\FacebookResponseException $e) {
+  echo 'Graph returned an error: ' . $e->getMessage();
+  exit;
+} catch(Facebook\Exceptions\FacebookSDKException $e) {
+  echo 'Facebook SDK returned an error: ' . $e->getMessage();
+  exit;
+}
+
+$user = $response->getGraphUser();
+
+$imageURL = json_decode($user['picture'], true);
+
+?>
+<img src="<?php echo $imageURL['url'];?>" alt="" class="img-thumbnail">
+<?php 
+
+echo 'Nome: ' . $user['name'] . '<br><hr>';
+//echo var_dump($imageURL);
+//echo '<br>';
+echo $user['id'].'<br>';
+echo $user['name'].'<br>';
+echo $user['first_name'].'<br>';
+echo $user['last_name'].'<br>';
+echo $user['age_range'].'<br>';
+echo $user['link'].'<br>';
+echo $user['gender'].'<br>';
+echo $user['locale'].'<br>';
+echo $user['timezone'].'<br>';
+
+$date = new DateTime('2000-01-01');
+$result = $date->format('Y-m-d H:i:s');
+echo $result.'<br>';
+echo $user['verified'];
+// OR
+//echo 'Name: ' . $user->getName();
