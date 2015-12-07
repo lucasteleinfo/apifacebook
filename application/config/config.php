@@ -17,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | environments.
 |
 */
-$config['base_url'] = 'http://localhost/projetos-hmvc/facebook/';
+$config['base_url'] = '';
 
 /*
 |--------------------------------------------------------------------------
@@ -470,6 +470,7 @@ $config['compress_output'] = FALSE;
 |
 */
 $config['time_reference'] = 'local';
+date_default_timezone_set('America/Sao_Paulo');
 
 /*
 |--------------------------------------------------------------------------

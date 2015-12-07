@@ -38,29 +38,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <link rel="stylesheet" href="<?php echo base_url();?>assets/css/main.css" />
 </head>
 <body>
-
-	<!-- API Facebook -->
-	<script>
-		window.fbAsyncInit = function() {
-			FB.init({
-				appId      : '1686504724926931',
-				xfbml      : true,
-				version    : 'v2.5'
-			});
-		};
-
-		(function(d, s, id){
-			var js, fjs = d.getElementsByTagName(s)[0];
-
-			if (d.getElementById(id)) {
-				return;
-			}
-
-			js = d.createElement(s); js.id = id;
-
-			js.src = "//connect.facebook.net/en_US/sdk.js";
-
-			fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));
-		</script>
-	<!-- ! API Facebook -->
+	<div style="text-align: center;" class="container">
+		<h1>Projeto Padrão HMVC CodeIgniter</h1>
